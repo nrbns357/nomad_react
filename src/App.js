@@ -15,7 +15,7 @@ function Food(props){
 function reander(dish){
   console.log(dish);
   return <Food name="gusgh"/>
-}
+} 
 
 const App = () => {
   return (
