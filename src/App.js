@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
+import A from "./asset/img/1 (1).jpg";
 
 document.title="nomad-react";
 
 const foodIlike = [
-  {img:"img"},
-  {name:"gusgh"}
+  {
+    image : "1",
+    name : "kimbap"
+  },
+
+  {
+    image : "2",
+    name : "kimchi"
+  }
 ];
 
 function Food(props){
@@ -14,14 +22,14 @@ function Food(props){
 
 function reander(dish){
   console.log(dish);
-  return <Food name="gusgh"/>
+  return <Food name={dish.name} picture={dish.image}/>
 } 
 
 const App = () => {
   return (
-    <>
-      {foodIlike.map(reander)}      
-    </>
+    <div>
+        {foodIlike.map(reander)}
+    </div>
   );
 };
 
