@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import A from "./asset/img/1 (1).jpg";
+import PropTypes from "prop-types";
 
 document.title="nomad-react";
 
@@ -16,19 +15,30 @@ const foodIlike = [
     id : 2,
     image : "2",
     name : "kimchi",
-    rating : 5.5
+    rating : 4.9
   }
 ];
 
-function Food(p){
-  return <h1>i like {p.name} <br/>{p.picture}</h1>
+function Food({name, picture, rating}){
+  return (
+  <div>
+    <h2>i like {name}</h2>
+    <h4>{rating}/5.0</h4>
+    <img src={picture} alt={name}/>
+  </div>
+  );
 }
 
+Food.propTypes ={
+  name : PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number
+}
 
 const App = () => {
   return (
     <div>
-        {foodIlike.map(dish => (<Food key={dish.id} name={dish.name} picture={dish.image}/>))}
+        {foodIlike.map(dish => (<Food key={dish.id} rating={dish.rating} name={dish.name} picture={dish.image}/>))}
     </div>
   );
 };
