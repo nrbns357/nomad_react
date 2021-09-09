@@ -6,29 +6,29 @@ document.title="nomad-react";
 
 const foodIlike = [
   {
+    id : 1,
     image : "1",
-    name : "kimbap"
+    name : "kimbap",
+    rating: 1.3
   },
 
   {
+    id : 2,
     image : "2",
-    name : "kimchi"
+    name : "kimchi",
+    rating : 5.5
   }
 ];
 
-function Food(props){
-  return <h1>I like {props.fav}</h1>
+function Food(p){
+  return <h1>i like {p.name} <br/>{p.picture}</h1>
 }
 
-function reander(dish){
-  console.log(dish);
-  return <Food name={dish.name} picture={dish.image}/>
-} 
 
 const App = () => {
   return (
     <div>
-        {foodIlike.map(reander)}
+        {foodIlike.map(dish => (<Food key={dish.id} name={dish.name} picture={dish.image}/>))}
     </div>
   );
 };
