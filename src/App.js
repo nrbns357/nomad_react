@@ -16,12 +16,14 @@ const App = () => {
     setState(state - 1);
   };
 
-  componentDidMount()
-{
-  console.log("COmponent rendered");
-}
-  componentDidUpdata() {
+  componentDidMount() {
+    console.log("Component rendered");
+  }
+  componentDidUpdate() {
     console.log("I just updated");
+  }
+  componentWillUnmount() {
+    console.log("Goodbye, cruel world");
   }
 
   return (
