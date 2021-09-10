@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import axios from "axios";
 
 document.title="nomad-react";
 
@@ -10,9 +10,9 @@ const App = () => {
 
   const [isLoading,setIsLoading] = useState(true);
   
-useEffect(()=>{
-  setIsLoading(false);
-}, 6000);
+  setTimeout (()=> 
+  setIsLoading(false)
+  , 5000);
 
   return (
     <div>
