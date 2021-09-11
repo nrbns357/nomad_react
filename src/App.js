@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import axios from "axios";
 
 document.title="nomad-react";
@@ -15,7 +15,7 @@ document.title="nomad-react";
 //   , 5000);
 
 //     getMovies = async() =>{
-//       const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json")
+//       const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating")
 //     };
 
 //     componentDidMount() {
@@ -35,9 +35,13 @@ class App extends React.Component{
     isLoading: true,
     movies: []
   };  
-      getMovies = async() =>{
-          const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json");
-          console.log(movies.data.data.movies);
+      getMovies = async () =>{
+        const {
+          data: { 
+            data:{ movies }
+            }
+          } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+            this.setState({movies, isLoading: false});
         };
     
         componentDidMount() {
@@ -46,7 +50,7 @@ class App extends React.Component{
  
   render(){
      
-    const{isLoading}=this.state;
+    const { isLoading } =this.state;
     return(
       <>
         {isLoading? "Loading..." : "We are ready"}
