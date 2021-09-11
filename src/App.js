@@ -1,44 +1,58 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import axios from "axios";
 
 document.title="nomad-react";
 
 
 
-const App = () => {
+// const App = () => {
 
 
-  const [isLoading,setIsLoading] = useState(true);
+//   const [isLoading,setIsLoading] = useState(true);
   
-  setTimeout (()=> 
-  setIsLoading(false)
-  , 5000);
+//   setTimeout (()=> 
+//   setIsLoading(false)
+//   , 5000);
 
-  return (
-    <div>
-      {isLoading ? "Loading..." : "We are ready"}
-    </div>
-  );
-};
+//     getMovies = async() =>{
+//       const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json")
+//     };
+
+//     componentDidMount() {
+//       getMovies();
+//     }
+
+//   return (
+//     <div>
+//       {isLoading ? "Loading..." : "We are ready"}
+//     </div>
+//   );
+// };
 
 
-// class App extends React.Component{
-//   state ={
-//     isLoading: true
-//   };
-//   componentDidMount(){
-//     setTimeout(()=>{
-//       this.setState({isLoading: false});
-//     },6000);
-//   }
-//   render(){
-//     const{isLoading}=this.state;
-//     return(
-//       <>
-//         {isLoading? "Loading..." : "We are ready"}
-//       </>
-//     )
-//   }
-// }
+class App extends React.Component{
+  state ={
+    isLoading: true,
+    movies: []
+  };  
+      getMovies = async() =>{
+          const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json");
+          console.log(movies.data.data.movies);
+        };
+    
+        componentDidMount() {
+          this.getMovies();
+        }
+ 
+  render(){
+     
+    const{isLoading}=this.state;
+    return(
+      <>
+        {isLoading? "Loading..." : "We are ready"}
+      </>
+    )
+  }
+}
 
 export default App;
